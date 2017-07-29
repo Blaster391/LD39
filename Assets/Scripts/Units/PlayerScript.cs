@@ -10,7 +10,9 @@ public class PlayerScript : UnitScript
 	    StartBase();
 	    LoadBaseActions();
 	}
-	
+
+    public UnitScript Target;
+
 	// Update is called once per frame
 	void Update () {
 	    if (!IsTurn() && GameManager.GameActive) return;
@@ -31,6 +33,12 @@ public class PlayerScript : UnitScript
 	    {
             CallMovementAction(Direction.Right);
         }
+	    if (Input.GetKeyDown(KeyCode.Space))
+	    {
+            var parameters = new ActionParameters { Target = this.Target};
+            Actions["BasicAttack"].Action(parameters);
+        }
+
 	}
 
     private void CallMovementAction(Direction direction)

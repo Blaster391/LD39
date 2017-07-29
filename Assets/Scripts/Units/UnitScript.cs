@@ -4,11 +4,14 @@ using UnityEngine;
 
 public abstract class UnitScript : MonoBehaviour
 {
+    //###STATS###
+    public int Health;
+    public int Speed;
 
     public int TotalActionTokens;
     public int CurrentActionTokens;
     public int CurrentPower;
-    public int Speed;
+
 
     public Vector2 StartingPosition;
     public GridPosition CurrentPosition;
@@ -46,5 +49,21 @@ public abstract class UnitScript : MonoBehaviour
     {
         Actions.Add("Move", new MovementAction(this));
         Actions.Add("Pass", new PassTurnAction(this));
+        Actions.Add("BasicAttack", new BasicAttackAction(this));
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Health -= damage;
+        if (Health <= 0)
+        {
+            Kill();
+        }
+    }
+
+    public void Kill()
+    {
+        GameManager.TurnSystem().UnRegisterUnit(this);
+        Destroy(gameObject);
     }
 }

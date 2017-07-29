@@ -37,7 +37,7 @@ public class MovementAction : BaseAction {
         Unit.SetPosition(target);
     }
 
-    public bool CanTakeAction(ActionParameters parameters)
+    public override bool CanTakeAction(ActionParameters parameters)
     {
         var newPosition = GetNewPosition(parameters.Direction);
         return base.CanTakeAction(parameters) && (GameManager.GridSystem().IsPositionAccessible(newPosition));

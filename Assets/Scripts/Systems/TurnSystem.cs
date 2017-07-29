@@ -23,7 +23,7 @@ public class TurnSystem : MonoBehaviour
 
     public void StartGame()
     {
-        Units = Units.OrderBy(x => x.Speed).ToList();
+        Units = Units.OrderByDescending(x => x.Speed).ToList();
         CurrentActiveUnit = 0;
         Units[CurrentActiveUnit].StartTurn();
         GameManager.GameActive = true;
@@ -32,6 +32,15 @@ public class TurnSystem : MonoBehaviour
     public void RegisterUnit(UnitScript unit)
     {
         Units.Add(unit);
+    }
+
+    public void UnRegisterUnit(UnitScript unit)
+    {
+        if(Units.Contains(unit))
+            Units.Remove(unit);
+
+        //TODO Make this less hacky
+        NextTurn();
     }
 
     public bool IsTurn(UnitScript unit)
