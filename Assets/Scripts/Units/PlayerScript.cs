@@ -34,7 +34,12 @@ public class PlayerScript : UnitScript
 	    {
             CallMovementAction(Direction.Right);
         }
-	    if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Actions["Power"].Action(null);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
 	    {
             var parameters = new ActionParameters { Target = this.Target};
             Actions["BasicAttack"].Action(parameters);

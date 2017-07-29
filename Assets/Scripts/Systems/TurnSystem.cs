@@ -18,6 +18,7 @@ public class TurnSystem : MonoBehaviour
         {
             CurrentActiveUnit = 0;
         }
+        GameManager.PowerSystem().SpawnPowerChance();
         Units[CurrentActiveUnit].StartTurn();
     }
 
@@ -26,6 +27,7 @@ public class TurnSystem : MonoBehaviour
         Units = Units.OrderByDescending(x => x.Speed).ToList();
         CurrentActiveUnit = 0;
         Units[CurrentActiveUnit].StartTurn();
+        GameManager.PowerSystem().SpawnPower();
         GameManager.GameActive = true;
     }
 

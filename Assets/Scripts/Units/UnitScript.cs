@@ -52,6 +52,7 @@ public abstract class UnitScript : MonoBehaviour
         Actions.Add("Move", new MovementAction(this));
         Actions.Add("Pass", new PassTurnAction(this));
         Actions.Add("BasicAttack", new BasicAttackAction(this));
+        Actions.Add("Power", new ConsumePowerAction(this));
     }
 
     public void TakeDamage(int damage)
@@ -65,6 +66,7 @@ public abstract class UnitScript : MonoBehaviour
 
     public void Kill()
     {
+        GameManager.GridSystem().FreePosition(CurrentPosition);
         GameManager.TurnSystem().UnRegisterUnit(this);
         Destroy(gameObject);
     }

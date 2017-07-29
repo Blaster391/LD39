@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0547c97259deae545bd6e9cd5e43c7a4
+timeCreated: 1501341035
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - PowerCellPrefab: {fileID: 1262983629895932, guid: 5d1a6d71153039b42b1d51be4255ca66,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

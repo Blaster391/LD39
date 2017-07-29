@@ -6,5 +6,5 @@ public class Tile
 {
 
     public bool IsFree = true;
-
+    public bool ContainsPower = false;
 }

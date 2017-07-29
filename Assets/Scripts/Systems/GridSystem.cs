@@ -6,13 +6,14 @@ public class GridSystem : MonoBehaviour
 {
 
     public Dictionary<GridPosition, Tile> Grid;
+    public Dictionary<GridPosition, PowerCell> PowerCells;
     public Vector2 Size;
     public List<GameObject> TilePrefabs;
 	// Use this for initialization
 	void Start () {
 
         Grid = new Dictionary<GridPosition, Tile>();
-
+        PowerCells = new Dictionary<GridPosition, PowerCell>();
         for (int i = 0; i < Size.x; i++)
 	    {
             for (int j = 0; j < Size.y; j++)
