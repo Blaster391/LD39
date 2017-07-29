@@ -16,6 +16,9 @@ public abstract class BaseAction
 
     public virtual bool CanTakeAction(ActionParameters parameters)
     {
+        if (!GameManager.GameActive)
+            return false;
+
         return Unit.CurrentActionTokens >= ActionCost() && Unit.CurrentPower >= PowerCost();
     }
 
@@ -24,12 +27,17 @@ public abstract class BaseAction
         if (!CanTakeAction(parameters))
             return;
 
+        ActionAnimation(parameters);
         PerformAction(parameters);
         PostPerformAction();
     }
 
     protected abstract void PerformAction(ActionParameters parameters);
 
+    protected virtual void ActionAnimation(ActionParameters parameters)
+    {
+        Unit.PassTurnAnimation();
+    }
     public virtual void PostPerformAction()
     {
         Unit.CurrentActionTokens -= ActionCost();

@@ -70,4 +70,17 @@ public abstract class UnitScript : MonoBehaviour
         GameManager.TurnSystem().UnRegisterUnit(this);
         Destroy(gameObject);
     }
+
+    public void PassTurnAnimation()
+    {
+        StartCoroutine(IdleAnimation());
+    }
+
+    public virtual IEnumerator IdleAnimation()
+    {
+        GameManager.GameActive = false;
+        yield return new WaitForSecondsRealtime(0.5f);
+        GameManager.GameActive = true;
+    }
+
 }

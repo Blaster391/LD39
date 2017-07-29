@@ -33,5 +33,16 @@ public class UISystem : MonoBehaviour {
         TargetHealthBar.SetBar(Player.Target.Health);
         TargetPowerBar.SetBar(Player.Target.CurrentPower);
         TargetActionBar.SetBar(Player.Target.CurrentActionTokens);
+
+        if (GameManager.TurnSystem().IsTurn(Player))
+        {
+            TargetActionBar.gameObject.SetActive(false);
+            PlayerActionBar.gameObject.SetActive(true);
+        }
+        else
+        {
+            PlayerActionBar.gameObject.SetActive(false);
+            TargetActionBar.gameObject.SetActive(true);
+        }
     }
 }

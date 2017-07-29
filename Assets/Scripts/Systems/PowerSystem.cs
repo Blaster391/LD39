@@ -9,6 +9,7 @@ public class PowerSystem : MonoBehaviour
     public GameObject PowerCellPrefab;
     public float BaseSpawnChance;
     public float SpawnChanceIncrease;
+    public int MaxPowerCells;
     public void SpawnPower()
     {
         var position = GetRandomFreePosition();
@@ -23,6 +24,9 @@ public class PowerSystem : MonoBehaviour
     private int _fails;
     public void SpawnPowerChance()
     {
+        if (GameManager.GridSystem().PowerCells.Count > MaxPowerCells)
+            return;
+
         var random = Random.value;
         if  (BaseSpawnChance + (SpawnChanceIncrease * _fails) > random)
         {
@@ -37,7 +41,7 @@ public class PowerSystem : MonoBehaviour
 
     private GridPosition GetRandomFreePosition()
     {
-        var possiblePositions =  GameManager.GridSystem().Grid.Where(x => x.Value.IsFree == true && x.Value.ContainsPower == false).Select(x => x.Key).ToList();
+        var possiblePositions =  GameManager.GridSystem().Grid.Where(x => x.Value.IsFree && x.Value.ContainsPower == false).Select(x => x.Key).ToList();
         var randomPosition = Mathf.CeilToInt(Random.value * possiblePositions.Count);
 
         return possiblePositions[randomPosition];

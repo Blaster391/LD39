@@ -8,6 +8,7 @@ public static class GameManager
     private static TurnSystem _turnSystem;
     private static GridSystem _gridSystem;
     private static PowerSystem _powerSystem;
+    private static AnimationSystem _animationSystem;
 
     public static GridSystem GridSystem()
     {
@@ -22,6 +23,11 @@ public static class GameManager
     public static PowerSystem PowerSystem()
     {
         return _powerSystem ?? (_powerSystem = GameObject.Find("Master").GetComponent<PowerSystem>());
+    }
+
+    public static AnimationSystem AnimationSystem()
+    {
+        return _animationSystem ?? (_animationSystem = GameObject.Find("Master").GetComponent<AnimationSystem>());
     }
 
     public static PlayerScript PlayerUnit;
