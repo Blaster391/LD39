@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using NUnit.Framework.Constraints;
+using UnityEngine;
+
+public class TurnSystem : MonoBehaviour
+{
+
+    public List<UnitScript> Units = new List<UnitScript>();
+    public int CurrentActiveUnit;
+
+    public void NextTurn()
+    {
+        CurrentActiveUnit++;
+        if (CurrentActiveUnit >= Units.Count)
+        {
+            CurrentActiveUnit = 0;
+        }
+        Units[CurrentActiveUnit].StartTurn();
+    }
+
+    public void StartGame()
+    {
+        Units = Units.OrderBy(x => x.Speed).ToList();
+        CurrentActiveUnit = 0;
+        Units[CurrentActiveUnit].StartTurn();
+        GameManager.GameActive = true;
+    }
+
+    public void RegisterUnit(UnitScript unit)
+    {
+        Units.Add(unit);
+    }
+
+    public bool IsTurn(UnitScript unit)
+    {
+        return Units[CurrentActiveUnit] == unit;
+    }
+
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+}
