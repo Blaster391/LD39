@@ -10,6 +10,7 @@ public abstract class UnitScript : MonoBehaviour
 
     public int TotalActionTokens;
     public int CurrentActionTokens;
+    public int MaxPower;
     public int CurrentPower;
 
 
@@ -24,6 +25,7 @@ public abstract class UnitScript : MonoBehaviour
         GameManager.TurnSystem().RegisterUnit(this);
         CurrentPosition = new GridPosition(StartingPosition);
         SetPosition(CurrentPosition);
+        CurrentPower = MaxPower;
     }
 
     public void StartTurn()

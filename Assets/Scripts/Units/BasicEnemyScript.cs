@@ -55,7 +55,16 @@ public class BasicEnemyScript : UnitScript
 
     private bool WantsPower()
     {
-        return false;
+        if (CurrentPower == MaxPower)
+            return false;
+
+        if (CurrentPower <= 0)
+            return true;
+
+        var power = (float)CurrentPower/MaxPower;
+        var uncertainty = (Random.value - 0.5f) * 0.1f;
+
+        return PowerDesire - power + uncertainty > 0;
     }
 
 

@@ -410,9 +410,10 @@ MonoBehaviour:
   Speed: 1
   TotalActionTokens: 5
   CurrentActionTokens: 1
-  CurrentPower: 0
+  MaxPower: 50
+  CurrentPower: 2
   StartingPosition: {x: 5, y: 5}
-  PowerDesire: 0
+  PowerDesire: 0.5
 --- !u!1001 &1844217708
 Prefab:
   m_ObjectHideFlags: 0
