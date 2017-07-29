@@ -7,7 +7,7 @@ public static class GameManager
 
     private static TurnSystem _turnSystem;
     private static GridSystem _gridSystem;
-
+    public static PlayerScript PlayerUnit;
     public static GridSystem GridSystem()
     {
         return _gridSystem ?? (_gridSystem = GameObject.Find("Master").GetComponent<GridSystem>());

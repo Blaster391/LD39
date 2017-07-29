@@ -9,6 +9,7 @@ public class PlayerScript : UnitScript
 	{
 	    StartBase();
 	    LoadBaseActions();
+	    GameManager.PlayerUnit = this;
 	}
 
     public UnitScript Target;

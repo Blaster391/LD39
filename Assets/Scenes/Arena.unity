@@ -408,10 +408,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 5
   Speed: 1
-  TotalActionTokens: 1
+  TotalActionTokens: 5
   CurrentActionTokens: 1
-  CurrentPower: 5
+  CurrentPower: 0
   StartingPosition: {x: 5, y: 5}
+  PowerDesire: 0
 --- !u!1001 &1844217708
 Prefab:
   m_ObjectHideFlags: 0
