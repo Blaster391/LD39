@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerScript : UnitScript
 {
-    public UIBarScript HealthBar;
-    public UIBarScript PowerBar;
 
     // Use this for initialization
     void Start ()
@@ -13,17 +11,17 @@ public class PlayerScript : UnitScript
 	    StartBase();
 	    LoadBaseActions();
 	    GameManager.PlayerUnit = this;
-	    HealthBar.MaximumValue = Health;
-	    HealthBar.SetBar(Health);
 
 
-	}
+    }
 
     public UnitScript Target;
 
 	// Update is called once per frame
 	void Update () {
-	    if (!IsTurn() && GameManager.GameActive) return;
+
+
+        if (!IsTurn() && GameManager.GameActive) return;
 
 	    if (Input.GetKeyDown(KeyCode.W))
 	    {
@@ -60,16 +58,5 @@ public class PlayerScript : UnitScript
         Actions["Move"].Action(parameters);
     }
 
-    public override void TakeDamage(int damage)
-    {
-        base.TakeDamage(damage);
-        UpdateUi();
-    }
-
-    public void UpdateUi()
-    {
-        HealthBar.SetBar(Health);
-
-    }
 
 }
