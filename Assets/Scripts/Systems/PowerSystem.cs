@@ -24,7 +24,7 @@ public class PowerSystem : MonoBehaviour
     public void SpawnPowerChance()
     {
         var random = Random.value;
-        if (random > (BaseSpawnChance + (SpawnChanceIncrease * _fails)))
+        if  (BaseSpawnChance + (SpawnChanceIncrease * _fails) > random)
         {
             SpawnPower();
             _fails = 0;

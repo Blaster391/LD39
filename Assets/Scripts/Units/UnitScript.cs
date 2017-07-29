@@ -55,7 +55,7 @@ public abstract class UnitScript : MonoBehaviour
         Actions.Add("Power", new ConsumePowerAction(this));
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         Health -= damage;
         if (Health <= 0)

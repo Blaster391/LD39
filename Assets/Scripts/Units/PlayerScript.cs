@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class PlayerScript : UnitScript
 {
-	// Use this for initialization
-	void Start ()
+    public UIBarScript HealthBar;
+    public UIBarScript PowerBar;
+
+    // Use this for initialization
+    void Start ()
 	{
 	    StartBase();
 	    LoadBaseActions();
 	    GameManager.PlayerUnit = this;
+	    HealthBar.MaximumValue = Health;
+	    HealthBar.SetBar(Health);
+
+
 	}
 
     public UnitScript Target;
@@ -51,6 +58,18 @@ public class PlayerScript : UnitScript
     {
         var parameters = new ActionParameters {Direction = direction};
         Actions["Move"].Action(parameters);
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        UpdateUi();
+    }
+
+    public void UpdateUi()
+    {
+        HealthBar.SetBar(Health);
+
     }
 
 }

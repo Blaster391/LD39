@@ -21,12 +21,17 @@ public class BasicEnemyScript : UnitScript
 	    }
 	}
 
+    private GridPosition _targetPower;
     private void DoAnAction()
     {
         if (WantsPower())
         {
-            
+            if (TryGetPower())
+            {
+                return;
+            }
         }
+        _targetPower = null;
 
         if (CurrentPower == 0)
         {
@@ -35,7 +40,6 @@ public class BasicEnemyScript : UnitScript
                 return;
             }
         }
-
 
         if (DistanceFromPlayer() <= 1.9f)
         {
@@ -55,6 +59,14 @@ public class BasicEnemyScript : UnitScript
 
     private bool WantsPower()
     {
+        if (_targetPower != null && GameManager.GridSystem().PowerCells.ContainsKey(_targetPower))
+            return true;
+
+        _targetPower = null;
+
+        if (GameManager.GridSystem().PowerCells.Count == 0)
+            return false;
+
         if (CurrentPower == MaxPower)
             return false;
 
@@ -64,9 +76,36 @@ public class BasicEnemyScript : UnitScript
         var power = (float)CurrentPower/MaxPower;
         var uncertainty = (Random.value - 0.5f) * 0.1f;
 
-        return PowerDesire - power + uncertainty > 0;
+        if (PowerDesire - power + uncertainty > 0)
+        {
+            _targetPower = SelectClosestPower();
+            return true;
+        }
+
+        return false;
     }
 
+
+    private GridPosition SelectClosestPower()
+    {
+        GridPosition selectedCell = null;
+        foreach (var cell in GameManager.GridSystem().PowerCells.Keys)
+        {
+            if (selectedCell == null)
+            {
+                selectedCell = cell;
+            }
+            else
+            {
+                if(Vector2.Distance(CurrentPosition.ToVector2(),cell.ToVector2()) < Vector2.Distance(CurrentPosition.ToVector2(), selectedCell.ToVector2()))
+                {
+                    selectedCell = cell;
+                }
+            }
+        }
+
+        return selectedCell;
+    }
 
     private bool TryMoveAction()
     {
@@ -90,12 +129,50 @@ public class BasicEnemyScript : UnitScript
         return false;
     }
 
+    private bool TryGetPower()
+    {
+        if (CurrentPosition.Equals(_targetPower))
+        {
+            if ((Actions["Power"]).CanTakeAction(null))
+            {
+                Actions["Power"].Action(null);
+                _targetPower = null;
+                return true;
+            }
+            else
+            {
+                //TODO something else?
+                Actions["Pass"].Action(null);
+                return true;
+            }
+        }
+
+        ActionParameters tryMoveUpParameters = new ActionParameters { Direction = DirectionToPower() };
+        if ((Actions["Move"]).CanTakeAction(tryMoveUpParameters))
+        {
+            Actions["Move"].Action(tryMoveUpParameters);
+            return true;
+        }
+        return false;
+    }
+
     private Direction DirectionToPlayer()
     {
-        var player = GameManager.PlayerUnit;
+        return DirectionToPosition(GameManager.PlayerUnit.CurrentPosition);
+    }
 
-        var xDif = CurrentPosition.x - player.CurrentPosition.x;
-        var yDif = CurrentPosition.y - player.CurrentPosition.y;
+    private Direction DirectionToPower()
+    {
+        return DirectionToPosition(_targetPower);
+    }
+
+    private Direction DirectionToPosition(GridPosition position)
+    {
+        if(position == null) //TODO Debug this
+            return Direction.Up;
+
+        var xDif = CurrentPosition.x - position.x;
+        var yDif = CurrentPosition.y - position.y;
 
         if (Mathf.Abs(xDif) > Mathf.Abs(yDif))
         {
@@ -103,7 +180,6 @@ public class BasicEnemyScript : UnitScript
         }
         return yDif > 0 ? Direction.Down : Direction.Up;
     }
-
 
     private float DistanceFromPlayer()
     {
