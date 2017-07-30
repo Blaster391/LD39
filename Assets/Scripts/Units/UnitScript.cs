@@ -61,6 +61,7 @@ public abstract class UnitScript : MonoBehaviour
         Actions.Add("BasicAttack", new BasicAttackAction(this));
         Actions.Add("Power", new ConsumePowerAction(this));
         Actions.Add("Heal", new HealingAction(this));
+        Actions.Add("Push", new PushAction(this));
     }
 
     public virtual void TakeDamage(int damage)

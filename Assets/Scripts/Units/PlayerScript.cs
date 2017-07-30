@@ -51,6 +51,12 @@ public class PlayerScript : UnitScript
         {
             Actions["Heal"].Action(null);
         }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            var parameters = new ActionParameters { Target = this.Target };
+            Actions["Push"].Action(parameters);
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Space))
 	    {
