@@ -20,6 +20,9 @@ public class UISystem : MonoBehaviour {
     public Text ConsoleText;
     public ScrollRect Console;
 
+    public GameObject ActiveIndicator;
+    public GameObject TargetIndicator;
+
     void Start()
     {
         PlayerHealthBar.MaximumValue = Player.Health;
@@ -41,15 +44,21 @@ public class UISystem : MonoBehaviour {
         TargetPowerBar.SetBar(Player.Target.CurrentPower);
         TargetActionBar.SetBar(Player.Target.CurrentActionTokens);
 
+        TargetIndicator.transform.position = Player.Target.gameObject.transform.position;
+        ActiveIndicator.transform.position =
+            GameManager.TurnSystem().Units[GameManager.TurnSystem().CurrentActiveUnit].transform.position;
+
         if (GameManager.TurnSystem().IsTurn(Player))
         {
             TargetActionBar.gameObject.SetActive(false);
             PlayerActionBar.gameObject.SetActive(true);
+            TargetIndicator.SetActive(true);
         }
         else
         {
             PlayerActionBar.gameObject.SetActive(false);
             TargetActionBar.gameObject.SetActive(true);
+            TargetIndicator.SetActive(false);
         }
     }
 
