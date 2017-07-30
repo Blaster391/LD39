@@ -47,6 +47,10 @@ public class PlayerScript : UnitScript
         {
             Actions["Pass"].Action(null);
         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Actions["Heal"].Action(null);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
 	    {

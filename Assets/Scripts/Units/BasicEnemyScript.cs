@@ -66,12 +66,27 @@ public class BasicEnemyScript : UnitScript
             }
         }
 
+        if (TryHeal())
+        {
+            return;
+        }
+
         if (TryMoveAction())
         {
             return;
         }
 
         Actions["Pass"].Action(null);
+    }
+
+    private bool TryHeal()
+    {
+        if ((Actions["Heal"]).CanTakeAction(null))
+        {
+            Actions["Heal"].Action(null);
+            return true;
+        }
+        return false;
     }
 
     private bool WantsPower()

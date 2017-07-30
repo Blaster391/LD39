@@ -41,16 +41,6 @@ public class UISystem : MonoBehaviour {
         PlayerActionBar.SetBar(Player.CurrentActionTokens);
 
 
-
-        if (Player.Target != null)
-        {
-            TargetIndicator.SetActive(true);
-            TargetIndicator.transform.position = Player.Target.gameObject.transform.position;
-        }
-        else
-        {
-
-        }
             
 
         ActiveIndicator.transform.position =
@@ -68,8 +58,15 @@ public class UISystem : MonoBehaviour {
             TargetActionBar.gameObject.SetActive(true);
             TargetIndicator.SetActive(false);
         }
-
-        if (Player.Target == null)
+        if (Player.Target != null)
+        {
+            //TargetIndicator.SetActive(true);
+            TargetIndicator.transform.position = Player.Target.gameObject.transform.position;
+            TargetHealthBar.SetBar(Player.Target.Health);
+            TargetPowerBar.SetBar(Player.Target.CurrentPower);
+            TargetActionBar.SetBar(Player.Target.CurrentActionTokens);
+        }
+        else
         {
             TargetIndicator.SetActive(false);
             TargetHealthBar.gameObject.SetActive(false);

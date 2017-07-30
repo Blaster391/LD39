@@ -8,6 +8,7 @@ public abstract class UnitScript : MonoBehaviour
     public string Name;
 
     //###STATS###
+    public int MaxHealth;
     public int Health;
     public int Strength;
     public int Speed;
@@ -59,6 +60,7 @@ public abstract class UnitScript : MonoBehaviour
         Actions.Add("Pass", new PassTurnAction(this));
         Actions.Add("BasicAttack", new BasicAttackAction(this));
         Actions.Add("Power", new ConsumePowerAction(this));
+        Actions.Add("Heal", new HealingAction(this));
     }
 
     public virtual void TakeDamage(int damage)
@@ -158,4 +160,27 @@ public abstract class UnitScript : MonoBehaviour
         GameManager.GameActive = true;
     }
 
+
+    public void HealAnimation()
+    {
+        StartCoroutine(HealAnimationCo());
+    }
+
+    public virtual IEnumerator HealAnimationCo()
+    {
+        GameManager.GameActive = false;
+        yield return new WaitForSeconds(0.3f);
+        var attack = Instantiate(GameManager.AnimationSystem().HealImage);
+        attack.transform.position = transform.position;
+
+        yield return new WaitForSeconds(0.3f);
+        Destroy(attack);
+        yield return new WaitForSeconds(0.3f);
+        attack = Instantiate(GameManager.AnimationSystem().HealImage);
+        attack.transform.position = transform.position;
+        yield return new WaitForSeconds(0.3f);
+        Destroy(attack);
+        yield return new WaitForSeconds(0.3f);
+        GameManager.GameActive = true;
+    }
 }
