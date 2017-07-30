@@ -44,7 +44,10 @@ public class BasicEnemyScript : UnitScript
             {
                 return;
             }
-            if (TryMoveAroundPlayer())
+
+            var directionToPower = DirectionToPosition(_targetPower);
+
+            if (TryMoveAroundObstacle(directionToPower))
             {
                 return;
             }
@@ -168,9 +171,9 @@ public class BasicEnemyScript : UnitScript
         return false;
     }
 
-    private bool TryMoveAroundPlayer()
+    private bool TryMoveAroundObstacle(Direction direction)
     {
-        var directionToPlayer = DirectionToPlayer();
+        var directionToPlayer = direction;
 
         if (directionToPlayer != Direction.Up && directionToPlayer != Direction.Down)
         {
