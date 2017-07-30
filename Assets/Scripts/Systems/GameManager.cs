@@ -50,6 +50,5 @@ public static class GameManager
         _powerSystem = null;
         _animationSystem = null;
         _uiSystem = null;
-        GameObject.Find("Master");
     }
 }

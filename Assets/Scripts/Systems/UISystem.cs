@@ -146,9 +146,20 @@ public class UISystem : MonoBehaviour {
 
     public void RestartGame()
     {
+        GameManager.TurnSystem().Units = new List<UnitScript>();
+        GameManager.TurnSystem().CurrentActiveUnit = 0;
+
+        GameManager.GridSystem().Grid = new Dictionary<GridPosition, Tile>();
+        GameManager.GridSystem().PowerCells = new Dictionary<GridPosition, PowerCell>();
+
+        Destroy(GameManager.TurnSystem());
+        Destroy(GameManager.GridSystem());
+        Destroy(GameManager.AnimationSystem());
+        Destroy(GameManager.PowerSystem());
         GameManager.Reset();
         Destroy(GameObject.Find("Master"));
         SceneManager.LoadScene(0);
+        Destroy(this);
     }
 
     public void Quit()
