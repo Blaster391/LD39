@@ -42,7 +42,7 @@ public class PowerSystem : MonoBehaviour
     private GridPosition GetRandomFreePosition()
     {
         var possiblePositions =  GameManager.GridSystem().Grid.Where(x => x.Value.IsFree && x.Value.ContainsPower == false).Select(x => x.Key).ToList();
-        var randomPosition = Mathf.CeilToInt(Random.value * possiblePositions.Count);
+        var randomPosition = Mathf.FloorToInt(Random.value * possiblePositions.Count);
 
         return possiblePositions[randomPosition];
     }

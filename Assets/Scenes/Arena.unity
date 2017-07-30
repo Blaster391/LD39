@@ -782,16 +782,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 212093767104073986, guid: c319d6828fda8b241b1adc8ec5d7bda7,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 78008d963a3db4f4a86688e5524cb14a,
-        type: 3}
     - target: {fileID: 114283694459583106, guid: c319d6828fda8b241b1adc8ec5d7bda7,
         type: 2}
-      propertyPath: MaxHealth
-      value: 10
+      propertyPath: StartingPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114283694459583106, guid: c319d6828fda8b241b1adc8ec5d7bda7,
+        type: 2}
+      propertyPath: StartingPosition.y
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c319d6828fda8b241b1adc8ec5d7bda7, type: 2}
@@ -838,7 +837,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4278701480232324, guid: 041aab9cd1441134a9df5bc80239e5c9, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 212475204483496660, guid: 041aab9cd1441134a9df5bc80239e5c9,
         type: 2}
@@ -1978,6 +1977,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Units: []
   CurrentActiveUnit: 0
+  EnemyPrefab: {fileID: 1622206995634986, guid: c319d6828fda8b241b1adc8ec5d7bda7,
+    type: 2}
 --- !u!114 &2038567945
 MonoBehaviour:
   m_ObjectHideFlags: 0

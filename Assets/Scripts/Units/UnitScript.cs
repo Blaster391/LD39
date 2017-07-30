@@ -32,12 +32,12 @@ public abstract class UnitScript : MonoBehaviour
         CurrentPosition = new GridPosition(StartingPosition);
         SetPosition(CurrentPosition);
         CurrentPower = MaxPower;
+        gameObject.transform.position = CurrentPosition.ToVector2();
     }
 
     public virtual void StartTurn()
     {
         CurrentActionTokens = TotalActionTokens;
-
     }
 
     public bool IsTurn()

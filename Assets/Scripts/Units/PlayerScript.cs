@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : UnitScript
 {
@@ -57,13 +58,22 @@ public class PlayerScript : UnitScript
             Actions["Push"].Action(parameters);
         }
 
-
         if (Input.GetKeyDown(KeyCode.Space))
 	    {
             var parameters = new ActionParameters { Target = this.Target};
             Actions["BasicAttack"].Action(parameters);
         }
-	}
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            SceneManager.LoadScene(0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 
     private void CallMovementAction(Direction direction)
     {
