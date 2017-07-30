@@ -108,12 +108,6 @@ public class BasicEnemyScript : UnitScript
             _targetPower = SelectClosestPower();
             return _targetPower != null;
         }
-           
-
-        //if (_targetPower != null && GameManager.GridSystem().PowerCells.ContainsKey(_targetPower))
-        //    return true;
-
-        //_targetPower = null;
 
         if (GameManager.GridSystem().PowerCells.Count == 0)
             return false;
@@ -134,10 +128,10 @@ public class BasicEnemyScript : UnitScript
 
     public override void Kill()
     {
-        //LEVEL UP
-
-        throw new NotImplementedException();
+        GameManager.UISystem().LevelUpScreen.SetActive(true);
+        GameManager.GameActive = false;
         GameManager.PlayerUnit.Score++;
+        GameManager.UISystem().LevelingUp = true;
         base.Kill();
     }
 

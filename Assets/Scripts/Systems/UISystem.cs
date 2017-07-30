@@ -25,6 +25,7 @@ public class UISystem : MonoBehaviour {
     public GameObject TargetIndicator;
 
     public GameObject GameOverScreen;
+    public GameObject LevelUpScreen;
 
     public Text ScoreText;
     public Text TurnText;
@@ -43,6 +44,17 @@ public class UISystem : MonoBehaviour {
 
     public GameObject ActionPanel;
 
+    public GameObject PlayerStats;
+    public Text PlayerStrength;
+    public Text PlayerSpeed;
+    public Text PlayerEfficieny;
+    public Text PlayerCapacity;
+    public GameObject TargetStats;
+    public Text TargetStrength;
+    public Text TargetSpeed;
+    public Text TargetEfficieny;
+    public Text TargetCapacity;
+    public bool LevelingUp = false;
     void Start()
     {
         GameOverScreen.SetActive(false);
@@ -57,6 +69,8 @@ public class UISystem : MonoBehaviour {
         TargetPowerBar.MaximumValue = Player.Target.MaxPower;
         TargetActionBar.MaximumValue = Player.Target.TotalActionTokens;
         ActionPanel.SetActive(false);
+        PlayerStats.SetActive(false);
+        TargetStats.SetActive(false);
     }
 
     void Update()
@@ -64,13 +78,22 @@ public class UISystem : MonoBehaviour {
         if (_isDead)
             return;
 
+        if (LevelingUp)
+            GameManager.GameActive = false;
+
         ScoreText.text = Player.Score.ToString();
         TurnText.text = GameManager.TurnSystem().CurrentRotation.ToString();
 
         PlayerHealthBar.SetBar(Player.Health);
         PlayerPowerBar.SetBar(Player.CurrentPower);
         PlayerActionBar.SetBar(Player.CurrentActionTokens);
-            
+
+        PlayerStats.SetActive(true);
+        PlayerStrength.text = "STR:" + Player.Strength;
+        PlayerSpeed.text = "SPD:" + Player.Speed;
+        PlayerEfficieny.text = "EFF:" + Player.Efficiency;
+        PlayerCapacity.text = "CAP:" + Player.Capacity;
+
 
         ActiveIndicator.transform.position =
             GameManager.TurnSystem().Units[GameManager.TurnSystem().CurrentActiveUnit].transform.position;
@@ -102,6 +125,11 @@ public class UISystem : MonoBehaviour {
             TargetHealthBar.SetBar(Player.Target.Health);
             TargetPowerBar.SetBar(Player.Target.CurrentPower);
             TargetActionBar.SetBar(Player.Target.CurrentActionTokens);
+            TargetStats.SetActive(true);
+            TargetStrength.text = "STR:" + Player.Target.Strength;
+            TargetSpeed.text = "SPD:" + Player.Target.Speed;
+            TargetEfficieny.text = "EFF:" + Player.Target.Efficiency;
+            TargetCapacity.text = "CAP:" + Player.Target.Capacity;
         }
         else
         {

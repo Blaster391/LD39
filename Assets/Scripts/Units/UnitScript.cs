@@ -13,6 +13,7 @@ public abstract class UnitScript : MonoBehaviour
     public int Strength;
     public int Speed;
     public int Efficiency;
+    public int Capacity;
 
     public int TotalActionTokens;
     public int CurrentActionTokens;

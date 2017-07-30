@@ -14,6 +14,7 @@ public class TurnSystem : MonoBehaviour
     public GameObject EnemyPrefab;
 
     public int CurrentRotation = 0;
+    private int EnemiesSpawned = 1;
     public void NextTurn()
     {
         CurrentActiveUnit++;
@@ -44,10 +45,13 @@ public class TurnSystem : MonoBehaviour
         if (position == null)
             return;
 
+        EnemiesSpawned++;
         var enemy = EnemyPrefab.GetComponent<BasicEnemyScript>();
         enemy.StartingPosition = position.ToVector2();
         enemy.CurrentPosition = position;
+        enemy.Name = "Bad Guy " + EnemiesSpawned;
         Instantiate(EnemyPrefab);
+
     }
 
     private GridPosition GetRandomFreePosition()

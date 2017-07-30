@@ -118,4 +118,41 @@ public class PlayerScript : UnitScript
         GameManager.UISystem().ShowDeathScreen();
         base.Kill();
     }
+
+    public void LevelUpHealth()
+    {
+        MaxHealth += 5;
+        Health += 3;
+        LevelUp();
+    }
+
+    public void LevelUpStrength()
+    {
+        Strength++;
+        LevelUp();
+    }
+
+    public void LevelUpCapacity()
+    {
+        Capacity++;
+        LevelUp();
+    }
+
+    public void LevelUpSpeed()
+    {
+        Speed++;
+        LevelUp();
+    }
+
+    public void LevelUpEfficieny()
+    {
+        Efficiency++;
+        LevelUp();
+    }
+
+    public void LevelUp()
+    {
+        GameManager.GameActive = true;
+        GameManager.UISystem().LevelUpScreen.SetActive(false);
+    }
 }
