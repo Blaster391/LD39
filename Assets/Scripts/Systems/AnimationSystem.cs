@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AnimationSystem : MonoBehaviour {
 
-    
-	
+    public GameObject AttackImage;
+    public GameObject RechargeImage;
+    public GameObject HealImage;
 }

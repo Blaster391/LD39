@@ -35,4 +35,9 @@ public class ConsumePowerAction : BaseAction {
         if (!GameManager.GridSystem().PowerCells.ContainsKey(Unit.CurrentPosition)) return false;
         return base.CanTakeAction(parameters);
     }
+
+    protected override void ActionAnimation(ActionParameters parameters)
+    {
+        Unit.ConsumePowerAnimation(Unit.transform.position);
+    }
 }

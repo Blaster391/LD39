@@ -116,4 +116,46 @@ public abstract class UnitScript : MonoBehaviour
         GameManager.GameActive = true;
     }
 
+    public void AttackAnimation(Vector2 target)
+    {
+        StartCoroutine(AttackAnimationCo(target));
+    }
+
+    public virtual IEnumerator AttackAnimationCo(Vector2 target)
+    {
+        GameManager.GameActive = false;
+
+        yield return new WaitForSeconds(0.3f);
+        var attack = Instantiate(GameManager.AnimationSystem().AttackImage);
+        attack.transform.position = target;
+        yield return new WaitForSeconds(0.5f);
+        Destroy(attack);
+        yield return new WaitForSeconds(0.3f);
+
+        GameManager.GameActive = true;
+    }
+
+    public void ConsumePowerAnimation(Vector2 target)
+    {
+        StartCoroutine(ConsumePowerAnimationCo(target));
+    }
+
+    public virtual IEnumerator ConsumePowerAnimationCo(Vector2 target)
+    {
+        GameManager.GameActive = false;
+        yield return new WaitForSeconds(0.3f);
+        var attack = Instantiate(GameManager.AnimationSystem().RechargeImage);
+        attack.transform.position = target;
+
+        yield return new WaitForSeconds(0.3f);
+        Destroy(attack);
+        yield return new WaitForSeconds(0.3f);
+        attack = Instantiate(GameManager.AnimationSystem().RechargeImage);
+        attack.transform.position = target;
+        yield return new WaitForSeconds(0.3f);
+        Destroy(attack);
+        yield return new WaitForSeconds(0.3f);
+        GameManager.GameActive = true;
+    }
+
 }

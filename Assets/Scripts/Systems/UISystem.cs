@@ -40,11 +40,19 @@ public class UISystem : MonoBehaviour {
         PlayerPowerBar.SetBar(Player.CurrentPower);
         PlayerActionBar.SetBar(Player.CurrentActionTokens);
 
-        TargetHealthBar.SetBar(Player.Target.Health);
-        TargetPowerBar.SetBar(Player.Target.CurrentPower);
-        TargetActionBar.SetBar(Player.Target.CurrentActionTokens);
 
-        TargetIndicator.transform.position = Player.Target.gameObject.transform.position;
+
+        if (Player.Target != null)
+        {
+            TargetIndicator.SetActive(true);
+            TargetIndicator.transform.position = Player.Target.gameObject.transform.position;
+        }
+        else
+        {
+
+        }
+            
+
         ActiveIndicator.transform.position =
             GameManager.TurnSystem().Units[GameManager.TurnSystem().CurrentActiveUnit].transform.position;
 
@@ -59,6 +67,14 @@ public class UISystem : MonoBehaviour {
             PlayerActionBar.gameObject.SetActive(false);
             TargetActionBar.gameObject.SetActive(true);
             TargetIndicator.SetActive(false);
+        }
+
+        if (Player.Target == null)
+        {
+            TargetIndicator.SetActive(false);
+            TargetHealthBar.gameObject.SetActive(false);
+            TargetPowerBar.gameObject.SetActive(false);
+            TargetActionBar.gameObject.SetActive(false);
         }
     }
 

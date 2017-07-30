@@ -4,12 +4,12 @@ using UnityEngine;
 
 public static class GameManager
 {
-
     private static TurnSystem _turnSystem;
     private static GridSystem _gridSystem;
     private static PowerSystem _powerSystem;
     private static AnimationSystem _animationSystem;
     private static UISystem _uiSystem;
+
 
     public static GridSystem GridSystem()
     {
