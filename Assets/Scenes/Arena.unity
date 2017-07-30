@@ -912,7 +912,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!222 &998099836
@@ -1475,6 +1475,7 @@ GameObject:
   - component: {fileID: 1613543942}
   - component: {fileID: 1613543941}
   - component: {fileID: 1613543940}
+  - component: {fileID: 1613543945}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1512,7 +1513,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.007352948, g: 0.007352948, b: 0.007352948, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1552,6 +1553,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1613543945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1613543939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb8deb66320da7478df7ef874f31fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraSpeed: 3
 --- !u!1001 &1624421268
 Prefab:
   m_ObjectHideFlags: 0
@@ -2127,7 +2140,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Size: {x: 10, y: 10}
   TilePrefabs:
-  - {fileID: 1783642283317474, guid: bac4ed5afaebc0347914fcca2381ce6a, type: 2}
+  - {fileID: 1288741156409204, guid: 11c50b938cdcf77459378849ecf4b7ba, type: 2}
+  - {fileID: 1991817712925796, guid: 8758889f7f33cfe44a44776ccd3e9465, type: 2}
+  - {fileID: 1507740403661688, guid: cd51f612a91a1dd4c9feb442f89e32b8, type: 2}
+  - {fileID: 1616858702435404, guid: f3fa0d3f217f2d64c85d263d3c250b2c, type: 2}
+  - {fileID: 1834887842430648, guid: 5593396390e1d9943ae913210994422d, type: 2}
+  - {fileID: 1890847144590220, guid: ea4dc3da86565bc45aa041d1dcc005bb, type: 2}
+  GridWall: {fileID: 1638748950761172, guid: 75084990da049304bb96debb4cb5a925, type: 2}
 --- !u!4 &2038567943
 Transform:
   m_ObjectHideFlags: 0

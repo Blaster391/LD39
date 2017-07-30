@@ -9,19 +9,43 @@ public class GridSystem : MonoBehaviour
     public Dictionary<GridPosition, PowerCell> PowerCells;
     public Vector2 Size;
     public List<GameObject> TilePrefabs;
+    public GameObject GridWall;
 	// Use this for initialization
-	void Start () {
-
+    void Start()
+    {
         Grid = new Dictionary<GridPosition, Tile>();
         PowerCells = new Dictionary<GridPosition, PowerCell>();
         for (int i = 0; i < Size.x; i++)
-	    {
+        {
             for (int j = 0; j < Size.y; j++)
             {
-                AddTile(new GridPosition(i,j));
+                AddTile(new GridPosition(i, j));
             }
         }
-	}
+
+        AddWall(new GridPosition(-1, -1));
+        AddWall(new GridPosition(-1, Mathf.RoundToInt(Size.y)));
+        AddWall(new GridPosition(Mathf.RoundToInt(Size.x), -1));
+        AddWall(new GridPosition(Mathf.RoundToInt(Size.x), Mathf.RoundToInt(Size.y)));
+
+        for (int i = 0; i < Size.x; i++)
+        {
+            AddWall(new GridPosition(i,-1));
+            AddWall(new GridPosition(i, Mathf.RoundToInt(Size.y)));
+        }
+
+        for (int i = 0; i < Size.y; i++)
+        {
+            AddWall(new GridPosition(-1, i));
+            AddWall(new GridPosition(Mathf.RoundToInt(Size.x), i));
+        }
+    }
+
+    void AddWall(GridPosition position)
+    {
+        var tileObject = GameObject.Instantiate(GridWall);
+        tileObject.transform.position = position.ToVector2();
+    }
 
     void AddTile(GridPosition position)
     {

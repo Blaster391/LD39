@@ -9,7 +9,9 @@ public abstract class UnitScript : MonoBehaviour
 
     //###STATS###
     public int Health;
+    public int Strength;
     public int Speed;
+    public int Efficiency;
 
     public int TotalActionTokens;
     public int CurrentActionTokens;
