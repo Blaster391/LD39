@@ -44,26 +44,28 @@ public class PlayerScript : UnitScript
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Actions["Power"].Action(null);
+            ConsumePower();
+
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Actions["Pass"].Action(null);
+            PassTurn();
+
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Actions["Heal"].Action(null);
+            Heal();
+
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            var parameters = new ActionParameters { Target = this.Target };
-            Actions["Push"].Action(parameters);
+            Push();
+
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
-	    {
-            var parameters = new ActionParameters { Target = this.Target};
-            Actions["BasicAttack"].Action(parameters);
+        {
+            Attack();
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
@@ -75,6 +77,33 @@ public class PlayerScript : UnitScript
         {
             Application.Quit();
         }
+    }
+
+    public void PassTurn()
+    {
+        Actions["Pass"].Action(null);
+    }
+
+    public void ConsumePower()
+    {
+        Actions["Power"].Action(null);
+    }
+
+    public void Attack()
+    {
+        var parameters = new ActionParameters { Target = this.Target };
+        Actions["BasicAttack"].Action(parameters);
+    }
+
+    public void Push()
+    {
+        var parameters = new ActionParameters { Target = this.Target };
+        Actions["Push"].Action(parameters);
+    }
+
+    public void Heal()
+    {
+        Actions["Heal"].Action(null);
     }
 
     private void CallMovementAction(Direction direction)

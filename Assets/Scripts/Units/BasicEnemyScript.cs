@@ -8,6 +8,7 @@ public class BasicEnemyScript : UnitScript
 {
 
     public float PowerDesire = 0;
+    public float HealDesire = 0;
 
     public override void StartTurn()
     {
@@ -71,9 +72,12 @@ public class BasicEnemyScript : UnitScript
             }
         }
 
-        if (TryHeal())
+        if (Random.value > HealDesire)
         {
-            return;
+            if (TryHeal())
+            {
+                return;
+            }
         }
 
         if (TryMoveAction())
@@ -133,6 +137,7 @@ public class BasicEnemyScript : UnitScript
         //LEVEL UP
 
         throw new NotImplementedException();
+        GameManager.PlayerUnit.Score++;
         base.Kill();
     }
 

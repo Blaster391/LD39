@@ -36,9 +36,18 @@ public class UISystem : MonoBehaviour {
     public Text ScoreTextDeath;
     public Text TurnTextDeath;
 
+    public Button AttackButton;
+    public Button ConsumeButton;
+    public Button PushButton;
+    public Button HealingButton;
+
+    public GameObject ActionPanel;
+
     void Start()
     {
         GameOverScreen.SetActive(false);
+
+        Player = GameManager.PlayerUnit;
 
         PlayerHealthBar.MaximumValue = Player.Health;
         PlayerPowerBar.MaximumValue = Player.MaxPower;
@@ -47,6 +56,7 @@ public class UISystem : MonoBehaviour {
         TargetHealthBar.MaximumValue = Player.Target.Health;
         TargetPowerBar.MaximumValue = Player.Target.MaxPower;
         TargetActionBar.MaximumValue = Player.Target.TotalActionTokens;
+        ActionPanel.SetActive(false);
     }
 
     void Update()
@@ -65,14 +75,22 @@ public class UISystem : MonoBehaviour {
         ActiveIndicator.transform.position =
             GameManager.TurnSystem().Units[GameManager.TurnSystem().CurrentActiveUnit].transform.position;
 
-        if (GameManager.TurnSystem().IsTurn(Player))
+        if (GameManager.TurnSystem().IsTurn(Player) && !_isDead)
         {
+            ActionPanel.SetActive(true);
             TargetActionBar.gameObject.SetActive(false);
             PlayerActionBar.gameObject.SetActive(true);
             TargetIndicator.SetActive(true);
+
+            var actionParams = new ActionParameters {Target = Player.Target};
+            AttackButton.gameObject.SetActive(GameManager.PlayerUnit.Actions["BasicAttack"].CanTakeAction(actionParams));
+            HealingButton.gameObject.SetActive(GameManager.PlayerUnit.Actions["Heal"].CanTakeAction(actionParams));
+            PushButton.gameObject.SetActive(GameManager.PlayerUnit.Actions["Push"].CanTakeAction(actionParams));
+            ConsumeButton.gameObject.SetActive(GameManager.PlayerUnit.Actions["Power"].CanTakeAction(actionParams));
         }
         else
         {
+            ActionPanel.SetActive(false);
             PlayerActionBar.gameObject.SetActive(false);
             TargetActionBar.gameObject.SetActive(true);
             TargetIndicator.SetActive(false);
@@ -119,7 +137,7 @@ public class UISystem : MonoBehaviour {
         Canvas.ForceUpdateCanvases();
     }
 
-    private bool _isDead;
+    public bool _isDead = true;
     public void ShowDeathScreen()
     {
         ScoreTextDeath.text = Player.Score.ToString();

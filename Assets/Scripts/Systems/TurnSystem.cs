@@ -69,6 +69,7 @@ public class TurnSystem : MonoBehaviour
         Units[CurrentActiveUnit].StartTurn();
         GameManager.PowerSystem().SpawnPower();
         GameManager.GameActive = true;
+        GameManager.UISystem()._isDead = false;
         GameManager.UISystem().Log("Match Started");
     }
 
