@@ -21,9 +21,9 @@ public class ConsumePowerAction : BaseAction {
 
     protected override void PerformAction(ActionParameters parameters)
     {
-        Unit.CurrentPower += GameManager.GridSystem().PowerCells[Unit.CurrentPosition].Power;
-        if (Unit.CurrentPower > Unit.MaxPower)
-            Unit.CurrentPower = Unit.MaxPower;
+        Unit.CurrentPower += GameManager.GridSystem().PowerCells[Unit.CurrentPosition].Power * Unit.Efficiency;
+        if (Unit.CurrentPower > Unit.Capacity)
+            Unit.CurrentPower = Unit.Capacity;
 
         GameManager.PowerSystem().ConsumePower(Unit.CurrentPosition);
         GameManager.UISystem().Log(Unit.Name + " Consumed Power");
@@ -31,7 +31,7 @@ public class ConsumePowerAction : BaseAction {
 
     public override bool CanTakeAction(ActionParameters parameters)
     {
-        if (Unit.CurrentPower == Unit.MaxPower) return false;
+        if (Unit.CurrentPower == Unit.Capacity) return false;
         if (!GameManager.GridSystem().PowerCells.ContainsKey(Unit.CurrentPosition)) return false;
         return base.CanTakeAction(parameters);
     }

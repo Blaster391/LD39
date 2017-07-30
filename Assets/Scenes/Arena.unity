@@ -1907,6 +1907,26 @@ Prefab:
       propertyPath: HealDesire
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114283694459583106, guid: c319d6828fda8b241b1adc8ec5d7bda7,
+        type: 2}
+      propertyPath: Strength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114283694459583106, guid: c319d6828fda8b241b1adc8ec5d7bda7,
+        type: 2}
+      propertyPath: Speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114283694459583106, guid: c319d6828fda8b241b1adc8ec5d7bda7,
+        type: 2}
+      propertyPath: Efficiency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114283694459583106, guid: c319d6828fda8b241b1adc8ec5d7bda7,
+        type: 2}
+      propertyPath: Capacity
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c319d6828fda8b241b1adc8ec5d7bda7, type: 2}
   m_IsPrefabParent: 0
@@ -4004,6 +4024,26 @@ Prefab:
         type: 2}
       propertyPath: Health
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114342556323268754, guid: 8a4ef2b952488ed46b4a3d8b2ca4a4d0,
+        type: 2}
+      propertyPath: Strength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114342556323268754, guid: 8a4ef2b952488ed46b4a3d8b2ca4a4d0,
+        type: 2}
+      propertyPath: Speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114342556323268754, guid: 8a4ef2b952488ed46b4a3d8b2ca4a4d0,
+        type: 2}
+      propertyPath: Efficiency
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114342556323268754, guid: 8a4ef2b952488ed46b4a3d8b2ca4a4d0,
+        type: 2}
+      propertyPath: Capacity
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a4ef2b952488ed46b4a3d8b2ca4a4d0, type: 2}

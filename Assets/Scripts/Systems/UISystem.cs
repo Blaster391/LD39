@@ -62,12 +62,12 @@ public class UISystem : MonoBehaviour {
         Player = GameManager.PlayerUnit;
 
         PlayerHealthBar.MaximumValue = Player.Health;
-        PlayerPowerBar.MaximumValue = Player.MaxPower;
-        PlayerActionBar.MaximumValue = Player.TotalActionTokens;
+        PlayerPowerBar.MaximumValue = Player.Capacity;
+        PlayerActionBar.MaximumValue = Player.Speed;
 
         TargetHealthBar.MaximumValue = Player.Target.Health;
-        TargetPowerBar.MaximumValue = Player.Target.MaxPower;
-        TargetActionBar.MaximumValue = Player.Target.TotalActionTokens;
+        TargetPowerBar.MaximumValue = Player.Target.Capacity;
+        TargetActionBar.MaximumValue = Player.Target.Speed;
         ActionPanel.SetActive(false);
         PlayerStats.SetActive(false);
         TargetStats.SetActive(false);

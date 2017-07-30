@@ -112,10 +112,10 @@ public class BasicEnemyScript : UnitScript
         if (GameManager.GridSystem().PowerCells.Count == 0)
             return false;
 
-        if (CurrentPower == MaxPower)
+        if (CurrentPower == Capacity)
             return false;
 
-        var power = (float)CurrentPower/MaxPower;
+        var power = (float)CurrentPower/Capacity;
         var uncertainty = (Random.value - 0.5f) * 0.1f;
 
         if ((CurrentPower <= 0) ||PowerDesire - power + uncertainty > 0)

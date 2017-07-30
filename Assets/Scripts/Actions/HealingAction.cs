@@ -21,12 +21,12 @@ public class HealingAction : BaseAction {
 
     protected override void PerformAction(ActionParameters parameters)
     {
-        Unit.Health += 2;
+        Unit.Health += Unit.Efficiency;
         if (Unit.Health > Unit.MaxHealth)
         {
             Unit.Health = Unit.MaxHealth;
         }
-        GameManager.UISystem().Log(Unit.Name + " Healed for " + 2 + " HP!");
+        GameManager.UISystem().Log(Unit.Name + " Healed for " + Unit.Efficiency + " HP!");
     }
 
     public override bool CanTakeAction(ActionParameters parameters)

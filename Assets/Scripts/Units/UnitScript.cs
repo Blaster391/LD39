@@ -15,9 +15,7 @@ public abstract class UnitScript : MonoBehaviour
     public int Efficiency;
     public int Capacity;
 
-    public int TotalActionTokens;
     public int CurrentActionTokens;
-    public int MaxPower;
     public int CurrentPower;
 
 
@@ -32,13 +30,13 @@ public abstract class UnitScript : MonoBehaviour
         GameManager.TurnSystem().RegisterUnit(this);
         CurrentPosition = new GridPosition(StartingPosition);
         SetPosition(CurrentPosition);
-        CurrentPower = MaxPower;
+        CurrentPower = Capacity;
         gameObject.transform.position = CurrentPosition.ToVector2();
     }
 
     public virtual void StartTurn()
     {
-        CurrentActionTokens = TotalActionTokens;
+        CurrentActionTokens = Speed;
     }
 
     public bool IsTurn()

@@ -24,10 +24,10 @@ public class PushAction : BaseAction
     protected override void PerformAction(ActionParameters parameters)
     {
         GameManager.UISystem().Log(Unit.Name + " Pushed " + parameters.Target.Name);
-        var distanceToPush = 3; //todo stats based
+        var distanceToPush = Unit.Strength; //todo stats based
         var directionToPush = DirectionToPosition(parameters.Target.CurrentPosition);
         var restingPlace = parameters.Target.CurrentPosition;
-        for (int i = 0; i <= distanceToPush; i++)
+        for (int i = 0; i < distanceToPush; i++)
         {
             var newPos = GetNewPosition(directionToPush, restingPlace);
             if (GameManager.GridSystem().IsPositionAccessible(newPos))
@@ -36,8 +36,8 @@ public class PushAction : BaseAction
             }
             else
             {
-                parameters.Target.TakeDamage(3);
-                GameManager.UISystem().Log(parameters.Target.Name + " Took 3 damage from collision!");
+                parameters.Target.TakeDamage(3 * Unit.Strength);
+                GameManager.UISystem().Log(parameters.Target.Name + " Took "+ Unit.Strength + " damage from collision!");
                 break;
             }
 
