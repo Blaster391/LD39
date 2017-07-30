@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BasicEnemyScript : UnitScript
 {
@@ -121,6 +123,12 @@ public class BasicEnemyScript : UnitScript
         }
 
         return _targetPower != null;
+    }
+
+    public override void Kill()
+    {
+        //LEVEL UP
+        throw new NotImplementedException();
     }
 
 

@@ -73,7 +73,7 @@ public abstract class UnitScript : MonoBehaviour
         }
     }
 
-    public void Kill()
+    public virtual void Kill()
     {
         GameManager.UISystem().Log(Name + " Was Killed!");
         GameManager.GridSystem().FreePosition(CurrentPosition);
@@ -121,12 +121,15 @@ public abstract class UnitScript : MonoBehaviour
 
     public void AttackAnimation(Vector2 target)
     {
+        transform.up = new Vector3(target.x, target.y) - transform.position;
         StartCoroutine(AttackAnimationCo(target));
     }
 
     public virtual IEnumerator AttackAnimationCo(Vector2 target)
     {
         GameManager.GameActive = false;
+
+
 
         yield return new WaitForSeconds(0.3f);
         var attack = Instantiate(GameManager.AnimationSystem().AttackImage);

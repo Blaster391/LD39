@@ -43,6 +43,7 @@ public class PushAction : BaseAction
 
         }
         parameters.Target.MoveAnimation(restingPlace.ToVector2());//Hacky AF
+        Unit.transform.up = parameters.Target.transform.position - Unit.transform.position;
         parameters.Target.SetPosition(restingPlace);
     }
 

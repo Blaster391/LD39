@@ -45,6 +45,24 @@ public class MovementAction : BaseAction {
 
     protected override void ActionAnimation(ActionParameters parameters)
     {
+        switch (parameters.Direction)
+        {
+            case Direction.Up:
+                Unit.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+                break;
+            case Direction.Down:
+                Unit.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+                break;
+            case Direction.Left:
+                Unit.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+                break;
+            case Direction.Right:
+                Unit.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 270));
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
         Unit.MoveAnimation(GetNewPosition(parameters.Direction).ToVector2());
     }
 

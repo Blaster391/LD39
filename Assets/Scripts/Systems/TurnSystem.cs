@@ -33,7 +33,7 @@ public class TurnSystem : MonoBehaviour
             SpawnNewEnemy();
 
         var randomValue = Random.value;
-        var chance = 0.1f * ((float)_currentRotation/3) / Units.Count;
+        var chance =( 0.1f * ((float)_currentRotation/3) )/ Units.Count;
         if(randomValue < chance)
             SpawnNewEnemy();
     }
