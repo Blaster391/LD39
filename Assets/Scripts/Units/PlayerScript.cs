@@ -43,6 +43,10 @@ public class PlayerScript : UnitScript
         {
             Actions["Power"].Action(null);
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Actions["Pass"].Action(null);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
 	    {

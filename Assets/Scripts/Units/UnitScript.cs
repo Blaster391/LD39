@@ -28,7 +28,7 @@ public abstract class UnitScript : MonoBehaviour
         CurrentPower = MaxPower;
     }
 
-    public void StartTurn()
+    public virtual void StartTurn()
     {
         CurrentActionTokens = TotalActionTokens;
 

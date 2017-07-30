@@ -7,6 +7,13 @@ public class BasicEnemyScript : UnitScript
 
     public float PowerDesire = 0;
 
+    public override void StartTurn()
+    {
+        base.StartTurn();
+        GameManager.PlayerUnit.Target = this;
+    }
+
+
     void Start()
     {
         StartBase();
@@ -30,6 +37,11 @@ public class BasicEnemyScript : UnitScript
             {
                 return;
             }
+            if (TryMoveAroundPlayer())
+            {
+                return;
+            }
+
         }
         _targetPower = null;
 
@@ -59,10 +71,20 @@ public class BasicEnemyScript : UnitScript
 
     private bool WantsPower()
     {
-        if (_targetPower != null && GameManager.GridSystem().PowerCells.ContainsKey(_targetPower))
+        if (_targetPower != null && _targetPower.Equals(CurrentPosition))
             return true;
 
-        _targetPower = null;
+        if (_targetPower != null)
+        {
+            _targetPower = SelectClosestPower();
+            return _targetPower != null;
+        }
+           
+
+        //if (_targetPower != null && GameManager.GridSystem().PowerCells.ContainsKey(_targetPower))
+        //    return true;
+
+        //_targetPower = null;
 
         if (GameManager.GridSystem().PowerCells.Count == 0)
             return false;
@@ -70,19 +92,15 @@ public class BasicEnemyScript : UnitScript
         if (CurrentPower == MaxPower)
             return false;
 
-        if (CurrentPower <= 0)
-            return true;
-
         var power = (float)CurrentPower/MaxPower;
         var uncertainty = (Random.value - 0.5f) * 0.1f;
 
-        if (PowerDesire - power + uncertainty > 0)
+        if ((CurrentPower <= 0) ||PowerDesire - power + uncertainty > 0)
         {
             _targetPower = SelectClosestPower();
-            return true;
         }
 
-        return false;
+        return _targetPower != null;
     }
 
 
@@ -93,13 +111,15 @@ public class BasicEnemyScript : UnitScript
         {
             if (selectedCell == null)
             {
-                selectedCell = cell;
+                if (GameManager.GridSystem().IsPositionAccessible(cell))
+                    selectedCell = cell;
             }
             else
             {
                 if(Vector2.Distance(CurrentPosition.ToVector2(),cell.ToVector2()) < Vector2.Distance(CurrentPosition.ToVector2(), selectedCell.ToVector2()))
                 {
-                    selectedCell = cell;
+                    if (GameManager.GridSystem().IsPositionAccessible(cell))
+                        selectedCell = cell;
                 }
             }
         }
@@ -115,6 +135,44 @@ public class BasicEnemyScript : UnitScript
             Actions["Move"].Action(tryMoveUpParameters);
             return true;
         }
+        return false;
+    }
+
+    private bool TryMoveAroundPlayer()
+    {
+        var directionToPlayer = DirectionToPlayer();
+
+        if (directionToPlayer != Direction.Up && directionToPlayer != Direction.Down)
+        {
+            ActionParameters tryMoveParameters = new ActionParameters { Direction = Direction.Up };
+            if ((Actions["Move"]).CanTakeAction(tryMoveParameters))
+            {
+                Actions["Move"].Action(tryMoveParameters);
+                return true;
+            }
+            tryMoveParameters = new ActionParameters { Direction = Direction.Down };
+            if ((Actions["Move"]).CanTakeAction(tryMoveParameters))
+            {
+                Actions["Move"].Action(tryMoveParameters);
+                return true;
+            }
+        }
+        else
+        {
+            ActionParameters tryMoveParameters = new ActionParameters { Direction = Direction.Left };
+            if ((Actions["Move"]).CanTakeAction(tryMoveParameters))
+            {
+                Actions["Move"].Action(tryMoveParameters);
+                return true;
+            }
+            tryMoveParameters = new ActionParameters { Direction = Direction.Right };
+            if ((Actions["Move"]).CanTakeAction(tryMoveParameters))
+            {
+                Actions["Move"].Action(tryMoveParameters);
+                return true;
+            }
+        }
+
         return false;
     }
 

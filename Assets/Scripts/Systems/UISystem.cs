@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Button = UnityEngine.UI.Button;
 
 public class UISystem : MonoBehaviour {
     public UIBarScript PlayerHealthBar;
@@ -12,6 +13,8 @@ public class UISystem : MonoBehaviour {
     public UIBarScript TargetActionBar;
 
     public PlayerScript Player;
+
+    public Button StartButton;
 
     void Start()
     {
@@ -44,5 +47,11 @@ public class UISystem : MonoBehaviour {
             PlayerActionBar.gameObject.SetActive(false);
             TargetActionBar.gameObject.SetActive(true);
         }
+    }
+
+    public void TriggerStart()
+    {
+        GameManager.TurnSystem().StartGame();
+        Destroy(StartButton.gameObject);
     }
 }
