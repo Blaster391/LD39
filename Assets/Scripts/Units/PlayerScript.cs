@@ -53,7 +53,6 @@ public class PlayerScript : UnitScript
             var parameters = new ActionParameters { Target = this.Target};
             Actions["BasicAttack"].Action(parameters);
         }
-
 	}
 
     private void CallMovementAction(Direction direction)

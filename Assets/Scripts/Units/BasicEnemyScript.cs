@@ -28,6 +28,11 @@ public class BasicEnemyScript : UnitScript
 	    }
 	}
 
+    void OnMouseDown()
+    {
+        GameManager.PlayerUnit.Target = this;
+    }
+
     private GridPosition _targetPower;
     private void DoAnAction()
     {
