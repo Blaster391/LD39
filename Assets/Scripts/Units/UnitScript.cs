@@ -30,6 +30,7 @@ public abstract class UnitScript : MonoBehaviour
         GameManager.TurnSystem().RegisterUnit(this);
         CurrentPosition = new GridPosition(StartingPosition);
         SetPosition(CurrentPosition);
+        Health = MaxHealth;
         CurrentPower = Capacity;
         gameObject.transform.position = CurrentPosition.ToVector2();
     }

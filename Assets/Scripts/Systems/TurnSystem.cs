@@ -50,6 +50,18 @@ public class TurnSystem : MonoBehaviour
         enemy.StartingPosition = position.ToVector2();
         enemy.CurrentPosition = position;
         enemy.Name = "Bad Guy " + EnemiesSpawned;
+
+        //Stat generator
+        enemy.HealDesire = Random.value / 2;
+        enemy.PowerDesire = Random.value * 0.3f;
+
+        enemy.Strength = 1 + Mathf.RoundToInt(Random.value * EnemiesSpawned * 0.5f);
+        enemy.Capacity = 5 + Mathf.RoundToInt(Random.value * EnemiesSpawned);
+        enemy.Speed = 3 + Mathf.RoundToInt(Random.value * EnemiesSpawned);
+        enemy.MaxHealth = 5 + Mathf.RoundToInt(Random.value * EnemiesSpawned * 2);
+        enemy.Efficiency = 2 + Mathf.RoundToInt(Random.value * EnemiesSpawned);
+
+        //
         Instantiate(EnemyPrefab);
 
     }

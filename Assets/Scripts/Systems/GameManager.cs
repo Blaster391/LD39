@@ -37,13 +37,13 @@ public static class GameManager
     }
 
     public static PlayerScript PlayerUnit;
-    public static bool GameActive = true;
+    public static bool GameActive = false;
 
     public static void Reset()
     {
 
 
-        GameActive = true;
+        GameActive = false;
         PlayerUnit = null;
         _turnSystem = null;
         _gridSystem = null;

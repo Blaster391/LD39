@@ -84,9 +84,9 @@ public class UISystem : MonoBehaviour {
         ScoreText.text = Player.Score.ToString();
         TurnText.text = GameManager.TurnSystem().CurrentRotation.ToString();
 
-        PlayerHealthBar.SetBar(Player.Health);
-        PlayerPowerBar.SetBar(Player.CurrentPower);
-        PlayerActionBar.SetBar(Player.CurrentActionTokens);
+        PlayerHealthBar.SetBar(Player.Health, Player.MaxHealth);
+        PlayerPowerBar.SetBar(Player.CurrentPower, Player.Capacity);
+        PlayerActionBar.SetBar(Player.CurrentActionTokens, Player.Speed);
 
         PlayerStats.SetActive(true);
         PlayerStrength.text = "STR:" + Player.Strength;
@@ -122,9 +122,9 @@ public class UISystem : MonoBehaviour {
         {
             //TargetIndicator.SetActive(true);
             TargetIndicator.transform.position = Player.Target.gameObject.transform.position;
-            TargetHealthBar.SetBar(Player.Target.Health);
-            TargetPowerBar.SetBar(Player.Target.CurrentPower);
-            TargetActionBar.SetBar(Player.Target.CurrentActionTokens);
+            TargetHealthBar.SetBar(Player.Target.Health, Player.Target.MaxHealth);
+            TargetPowerBar.SetBar(Player.Target.CurrentPower, Player.Target.Capacity);
+            TargetActionBar.SetBar(Player.Target.CurrentActionTokens, Player.Target.Speed);
             TargetStats.SetActive(true);
             TargetStrength.text = "STR:" + Player.Target.Strength;
             TargetSpeed.text = "SPD:" + Player.Target.Speed;

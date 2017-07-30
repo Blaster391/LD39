@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 
 public class PlayerScript : UnitScript
@@ -117,6 +119,24 @@ public class PlayerScript : UnitScript
         GameManager.GameActive = false;
         GameManager.UISystem().ShowDeathScreen();
         base.Kill();
+
+        try
+        {
+            Analytics.CustomEvent("gameOver", new Dictionary<string, object>
+            {
+                {"Level", Score},
+                {"MaxHealth", MaxHealth},
+                {"Strength", Strength},
+                {"Speed", Speed},
+                {"Efficiency", Efficiency},
+                {"Capacity", Capacity}
+            });
+        }
+        catch (Exception ex)
+        {
+            
+        }
+
     }
 
     public void LevelUpHealth()
