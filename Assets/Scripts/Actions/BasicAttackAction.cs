@@ -34,5 +34,6 @@ public class BasicAttackAction : BaseAction
     protected override void PerformAction(ActionParameters parameters)
     {
         parameters.Target.TakeDamage(1);
+        GameManager.UISystem().Log(Unit.Name + " Attacked for " + 1 + " damage!");
     }
 }

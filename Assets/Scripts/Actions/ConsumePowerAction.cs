@@ -26,6 +26,7 @@ public class ConsumePowerAction : BaseAction {
             Unit.CurrentPower = Unit.MaxPower;
 
         GameManager.PowerSystem().ConsumePower(Unit.CurrentPosition);
+        GameManager.UISystem().Log(Unit.Name + " Consumed Power");
     }
 
     public override bool CanTakeAction(ActionParameters parameters)

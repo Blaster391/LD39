@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Button = UnityEngine.UI.Button;
+using UnityEngine.UI;
 
 public class UISystem : MonoBehaviour {
     public UIBarScript PlayerHealthBar;
@@ -15,6 +16,9 @@ public class UISystem : MonoBehaviour {
     public PlayerScript Player;
 
     public Button StartButton;
+
+    public Text ConsoleText;
+    public ScrollRect Console;
 
     void Start()
     {
@@ -53,5 +57,24 @@ public class UISystem : MonoBehaviour {
     {
         GameManager.TurnSystem().StartGame();
         Destroy(StartButton.gameObject);
+    }
+
+    public void Log(string text)
+    {
+        ConsoleText.text += text;
+        ConsoleText.text += "\n";
+
+        StartCoroutine(ResetScroll());
+    }
+
+    IEnumerator ResetScroll()
+    {
+        Canvas.ForceUpdateCanvases();
+
+        // Wait.
+        yield return null;
+
+        Console.verticalScrollbar.value = 0f;
+        Canvas.ForceUpdateCanvases();
     }
 }

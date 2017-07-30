@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class UnitScript : MonoBehaviour
 {
+    public string Name;
+
     //###STATS###
     public int Health;
     public int Speed;
@@ -44,7 +47,8 @@ public abstract class UnitScript : MonoBehaviour
         GameManager.GridSystem().FreePosition(CurrentPosition);
         GameManager.GridSystem().FillPosition(target);
         CurrentPosition = target;
-        gameObject.transform.position = CurrentPosition.ToVector2();
+        if(GameManager.GameActive)
+            gameObject.transform.position = CurrentPosition.ToVector2();
     }
 
     public void LoadBaseActions()
@@ -66,6 +70,7 @@ public abstract class UnitScript : MonoBehaviour
 
     public void Kill()
     {
+        GameManager.UISystem().Log(Name + " Was Killed!");
         GameManager.GridSystem().FreePosition(CurrentPosition);
         GameManager.TurnSystem().UnRegisterUnit(this);
         Destroy(gameObject);
@@ -80,6 +85,32 @@ public abstract class UnitScript : MonoBehaviour
     {
         GameManager.GameActive = false;
         yield return new WaitForSecondsRealtime(0.5f);
+        GameManager.GameActive = true;
+    }
+
+    public void MoveAnimation(Vector2 target)
+    {
+        StartCoroutine(MoveAnimationCo(target));
+    }
+
+    public virtual IEnumerator MoveAnimationCo(Vector2 target)
+    {
+        GameManager.GameActive = false;
+        var startTime = Time.time;
+        var startMarker = CurrentPosition.ToVector2();
+        var journeyLength = Vector2.Distance(startMarker, target);
+        var speed = 3f;
+
+        while (Math.Abs(gameObject.transform.position.x - target.x) > 0.01f || Math.Abs(gameObject.transform.position.y - target.y) > 0.0f)
+        {
+            float distCovered = (Time.time - startTime) * speed;
+            float fracJourney = distCovered / journeyLength;
+            transform.position = Vector2.Lerp(startMarker, target, fracJourney);
+            yield return new WaitForEndOfFrame();
+        }
+
+        gameObject.transform.position = CurrentPosition.ToVector2();
+
         GameManager.GameActive = true;
     }
 

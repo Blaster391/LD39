@@ -19,5 +19,6 @@ public class PassTurnAction : BaseAction {
 
     protected override void PerformAction(ActionParameters parameters)
     {
+        GameManager.UISystem().Log(Unit.Name + " Passed Turn");
     }
 }

@@ -43,6 +43,11 @@ public class MovementAction : BaseAction {
         return base.CanTakeAction(parameters) && (GameManager.GridSystem().IsPositionAccessible(newPosition));
     }
 
+    protected override void ActionAnimation(ActionParameters parameters)
+    {
+        Unit.MoveAnimation(GetNewPosition(parameters.Direction).ToVector2());
+    }
+
     public override int PowerCost()
     {
         return 0;
