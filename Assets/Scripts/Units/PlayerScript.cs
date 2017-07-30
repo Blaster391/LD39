@@ -123,6 +123,7 @@ public class PlayerScript : UnitScript
     {
         MaxHealth += 5;
         Health += 3;
+        GameManager.UISystem().PlayerHealthBar.SetBar(Health, MaxHealth);
         LevelUp();
     }
 
@@ -134,19 +135,22 @@ public class PlayerScript : UnitScript
 
     public void LevelUpCapacity()
     {
-        Capacity++;
+        Capacity+=2;
+        CurrentPower++;
+        GameManager.UISystem().PlayerPowerBar.SetBar(CurrentPower, Capacity);
         LevelUp();
     }
 
     public void LevelUpSpeed()
     {
         Speed++;
+        GameManager.UISystem().PlayerActionBar.SetBar(CurrentActionTokens, Speed);
         LevelUp();
     }
 
     public void LevelUpEfficieny()
     {
-        Efficiency++;
+        Efficiency+=2;
         LevelUp();
     }
 
@@ -154,5 +158,6 @@ public class PlayerScript : UnitScript
     {
         GameManager.GameActive = true;
         GameManager.UISystem().LevelUpScreen.SetActive(false);
+        GameManager.UISystem().LevelingUp = false;
     }
 }

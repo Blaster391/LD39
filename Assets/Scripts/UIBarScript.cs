@@ -27,8 +27,14 @@ public class UIBarScript : MonoBehaviour
         BarText.text = currentValue + "/" + MaximumValue;
     }
 
-	// Use this for initialization
-	void Start ()
+    public void SetBar(float currentValue, float maxValue)
+    {
+        MaximumValue = maxValue;
+        SetBar(currentValue);
+    }
+
+    // Use this for initialization
+    void Start ()
 	{
 	    _originalX = Bar.rect.x;
 	    _originalY = Bar.rect.y;

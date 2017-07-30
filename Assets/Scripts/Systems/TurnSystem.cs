@@ -84,11 +84,15 @@ public class TurnSystem : MonoBehaviour
 
     public void UnRegisterUnit(UnitScript unit)
     {
-        if(Units.Contains(unit))
+        if (Units.Contains(unit))
+        {
+            if (Units.IndexOf(unit) < CurrentActiveUnit)
+            {
+                CurrentActiveUnit -= 1;
+            }
             Units.Remove(unit);
 
-        //TODO Make this less hacky
-        NextTurn();
+        }
     }
 
     public bool IsTurn(UnitScript unit)
