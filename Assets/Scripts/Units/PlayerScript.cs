@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PlayerScript : UnitScript
 {
 
+    public int Score;
+
     // Use this for initialization
     void Start ()
 	{
@@ -81,5 +83,10 @@ public class PlayerScript : UnitScript
         Actions["Move"].Action(parameters);
     }
 
-
+    public override void Kill()
+    {
+        GameManager.GameActive = false;
+        GameManager.UISystem().ShowDeathScreen();
+        base.Kill();
+    }
 }

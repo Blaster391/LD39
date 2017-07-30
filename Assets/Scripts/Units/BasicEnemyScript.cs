@@ -128,7 +128,9 @@ public class BasicEnemyScript : UnitScript
     public override void Kill()
     {
         //LEVEL UP
+
         throw new NotImplementedException();
+        base.Kill();
     }
 
 

@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework.Constraints;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class TurnSystem : MonoBehaviour
@@ -13,7 +13,7 @@ public class TurnSystem : MonoBehaviour
     public int CurrentActiveUnit;
     public GameObject EnemyPrefab;
 
-    private int _currentRotation = 0;
+    public int CurrentRotation = 0;
     public void NextTurn()
     {
         CurrentActiveUnit++;
@@ -21,7 +21,7 @@ public class TurnSystem : MonoBehaviour
         {
             CurrentActiveUnit = 0;
             SpawnNewEnemyChance();
-            _currentRotation++;
+            CurrentRotation++;
         }
         GameManager.PowerSystem().SpawnPowerChance();
         Units[CurrentActiveUnit].StartTurn();
@@ -33,7 +33,7 @@ public class TurnSystem : MonoBehaviour
             SpawnNewEnemy();
 
         var randomValue = Random.value;
-        var chance =( 0.1f * ((float)_currentRotation/3) )/ Units.Count;
+        var chance =( 0.1f * ((float)CurrentRotation/3) )/ Units.Count;
         if(randomValue < chance)
             SpawnNewEnemy();
     }
@@ -90,14 +90,4 @@ public class TurnSystem : MonoBehaviour
     {
         return Units[CurrentActiveUnit] == unit;
     }
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

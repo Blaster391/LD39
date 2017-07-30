@@ -129,8 +129,6 @@ public abstract class UnitScript : MonoBehaviour
     {
         GameManager.GameActive = false;
 
-
-
         yield return new WaitForSeconds(0.3f);
         var attack = Instantiate(GameManager.AnimationSystem().AttackImage);
         attack.transform.position = target;

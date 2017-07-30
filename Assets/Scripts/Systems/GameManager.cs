@@ -38,4 +38,18 @@ public static class GameManager
 
     public static PlayerScript PlayerUnit;
     public static bool GameActive = true;
+
+    public static void Reset()
+    {
+
+
+        GameActive = true;
+        PlayerUnit = null;
+        _turnSystem = null;
+        _gridSystem = null;
+        _powerSystem = null;
+        _animationSystem = null;
+        _uiSystem = null;
+        GameObject.Find("Master");
+    }
 }
