@@ -36,7 +36,7 @@ public class PushAction : BaseAction
             }
             else
             {
-                parameters.Target.TakeDamage(3 * Unit.Strength);
+                parameters.Target.TakeDamage(4 * Unit.Strength);
                 GameManager.UISystem().Log(parameters.Target.Name + " Took "+ Unit.Strength + " damage from collision!");
                 break;
             }

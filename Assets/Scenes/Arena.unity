@@ -175,7 +175,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Push [4]
+  m_Text: '[4] Push (P3 A3)'
 --- !u!222 &35506801
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -311,7 +311,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Heal [2]
+  m_Text: '[2] Heal (P1 A2)
 
 '
 --- !u!222 &72516718
@@ -1314,7 +1314,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pass Turn [5]
+  m_Text: '[5] Pass Turn '
 --- !u!222 &355751484
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2930,7 +2930,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Attack [3]
+  m_Text: '[3] Attack (P1 A1)
 
 '
 --- !u!222 &1032807377
@@ -6191,7 +6191,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Consume [1]
+  m_Text: '[1] Consume (P0 A3)'
 --- !u!222 &2140964325
 CanvasRenderer:
   m_ObjectHideFlags: 0
