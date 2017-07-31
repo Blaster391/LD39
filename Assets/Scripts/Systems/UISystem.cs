@@ -74,6 +74,8 @@ public class UISystem : MonoBehaviour {
 
     void Update()
     {
+        AttackButton.Select();
+
         if (_isDead)
         {
             TargetIndicator.SetActive(false);
