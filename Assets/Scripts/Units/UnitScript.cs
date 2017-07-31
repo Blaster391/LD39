@@ -22,6 +22,8 @@ public abstract class UnitScript : MonoBehaviour
     public Vector2 StartingPosition;
     public GridPosition CurrentPosition;
 
+    public AudioSource AudioSource;
+
     public Dictionary<string, BaseAction> Actions = new Dictionary<string, BaseAction>();
 
     // Use this for initialization
@@ -121,6 +123,9 @@ public abstract class UnitScript : MonoBehaviour
 
     public void AttackAnimation(Vector2 target)
     {
+        AudioSource.clip = GameManager.AnimationSystem().AttackSound;
+        AudioSource.Play();
+
         transform.up = new Vector3(target.x, target.y) - transform.position;
         StartCoroutine(AttackAnimationCo(target));
     }
@@ -141,6 +146,9 @@ public abstract class UnitScript : MonoBehaviour
 
     public void ConsumePowerAnimation(Vector2 target)
     {
+        AudioSource.clip = GameManager.AnimationSystem().PowerUpSound;
+        AudioSource.Play();
+
         StartCoroutine(ConsumePowerAnimationCo(target));
     }
 
@@ -165,6 +173,9 @@ public abstract class UnitScript : MonoBehaviour
 
     public void HealAnimation()
     {
+        AudioSource.clip = GameManager.AnimationSystem().HealSound;
+        AudioSource.Play();
+
         StartCoroutine(HealAnimationCo());
     }
 

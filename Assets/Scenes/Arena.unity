@@ -175,7 +175,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Push
+  m_Text: Push [4]
 --- !u!222 &35506801
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -311,7 +311,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Heal
+  m_Text: 'Heal [2]
 
 '
 --- !u!222 &72516718
@@ -1314,7 +1314,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pass Turn
+  m_Text: Pass Turn [5]
 --- !u!222 &355751484
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2332,41 +2332,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114283694459583106, guid: c319d6828fda8b241b1adc8ec5d7bda7,
-        type: 2}
-      propertyPath: StartingPosition.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114283694459583106, guid: c319d6828fda8b241b1adc8ec5d7bda7,
-        type: 2}
-      propertyPath: StartingPosition.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114283694459583106, guid: c319d6828fda8b241b1adc8ec5d7bda7,
-        type: 2}
-      propertyPath: HealDesire
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114283694459583106, guid: c319d6828fda8b241b1adc8ec5d7bda7,
-        type: 2}
-      propertyPath: Strength
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114283694459583106, guid: c319d6828fda8b241b1adc8ec5d7bda7,
-        type: 2}
-      propertyPath: Speed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114283694459583106, guid: c319d6828fda8b241b1adc8ec5d7bda7,
-        type: 2}
-      propertyPath: Efficiency
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114283694459583106, guid: c319d6828fda8b241b1adc8ec5d7bda7,
-        type: 2}
-      propertyPath: Capacity
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c319d6828fda8b241b1adc8ec5d7bda7, type: 2}
   m_IsPrefabParent: 0
@@ -2965,7 +2930,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Attack
+  m_Text: 'Attack [3]
 
 '
 --- !u!222 &1032807377
@@ -4075,6 +4040,7 @@ GameObject:
   - component: {fileID: 1613543941}
   - component: {fileID: 1613543940}
   - component: {fileID: 1613543945}
+  - component: {fileID: 1613543946}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4164,6 +4130,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraSpeed: 3
+--- !u!114 &1613543946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1613543939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 9f3f7a82286f7614780d5f259e98101b, type: 2}
 --- !u!1 &1620937049
 GameObject:
   m_ObjectHideFlags: 0
@@ -4869,42 +4847,6 @@ Prefab:
       propertyPath: Target
       value: 
       objectReference: {fileID: 1803622260}
-    - target: {fileID: 212796184776315444, guid: 8a4ef2b952488ed46b4a3d8b2ca4a4d0,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 20eb6d93eb8ca15458c0d99b6776fa1e,
-        type: 3}
-    - target: {fileID: 114342556323268754, guid: 8a4ef2b952488ed46b4a3d8b2ca4a4d0,
-        type: 2}
-      propertyPath: MaxHealth
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114342556323268754, guid: 8a4ef2b952488ed46b4a3d8b2ca4a4d0,
-        type: 2}
-      propertyPath: Health
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114342556323268754, guid: 8a4ef2b952488ed46b4a3d8b2ca4a4d0,
-        type: 2}
-      propertyPath: Strength
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114342556323268754, guid: 8a4ef2b952488ed46b4a3d8b2ca4a4d0,
-        type: 2}
-      propertyPath: Speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114342556323268754, guid: 8a4ef2b952488ed46b4a3d8b2ca4a4d0,
-        type: 2}
-      propertyPath: Efficiency
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114342556323268754, guid: 8a4ef2b952488ed46b4a3d8b2ca4a4d0,
-        type: 2}
-      propertyPath: Capacity
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a4ef2b952488ed46b4a3d8b2ca4a4d0, type: 2}
   m_IsPrefabParent: 0
@@ -5798,9 +5740,6 @@ MonoBehaviour:
   - {fileID: 1288741156409204, guid: 11c50b938cdcf77459378849ecf4b7ba, type: 2}
   - {fileID: 1991817712925796, guid: 8758889f7f33cfe44a44776ccd3e9465, type: 2}
   - {fileID: 1507740403661688, guid: cd51f612a91a1dd4c9feb442f89e32b8, type: 2}
-  - {fileID: 1616858702435404, guid: f3fa0d3f217f2d64c85d263d3c250b2c, type: 2}
-  - {fileID: 1834887842430648, guid: 5593396390e1d9943ae913210994422d, type: 2}
-  - {fileID: 1890847144590220, guid: ea4dc3da86565bc45aa041d1dcc005bb, type: 2}
   GridWall: {fileID: 1638748950761172, guid: 75084990da049304bb96debb4cb5a925, type: 2}
 --- !u!4 &2038567943
 Transform:
@@ -5915,6 +5854,12 @@ MonoBehaviour:
   RechargeImage: {fileID: 1419592490830324, guid: c8b06a69d5123d641b924b67ae263c7e,
     type: 2}
   HealImage: {fileID: 1017252408663896, guid: 5085ef67c3f2b1b4dbe340a0ece322f7, type: 2}
+  AttackSound: {fileID: 8300000, guid: e16efadecee884043a727ecd32119561, type: 3}
+  PushSound: {fileID: 8300000, guid: 784891a560050b941b37a79a75fa5228, type: 3}
+  HealSound: {fileID: 8300000, guid: 383f49e8496e2bb43ba95572c9337f0f, type: 3}
+  PowerUpSound: {fileID: 8300000, guid: adfce94677a930c408e8ed483be5e102, type: 3}
+  LevelUpSound: {fileID: 8300000, guid: cd62887e732c6f142847def879b26f19, type: 3}
+  MoveSoundSound: {fileID: 8300000, guid: ba7963c0454ae2045927a16beff68836, type: 3}
 --- !u!1 &2049626682
 GameObject:
   m_ObjectHideFlags: 0
@@ -6246,7 +6191,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Consume
+  m_Text: Consume [1]
 --- !u!222 &2140964325
 CanvasRenderer:
   m_ObjectHideFlags: 0

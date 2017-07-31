@@ -44,28 +44,28 @@ public class PlayerScript : UnitScript
 	    {
             CallMovementAction(Direction.Right);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             ConsumePower();
 
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             PassTurn();
 
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Heal();
 
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             Push();
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Attack();
         }
@@ -179,5 +179,7 @@ public class PlayerScript : UnitScript
         GameManager.GameActive = true;
         GameManager.UISystem().LevelUpScreen.SetActive(false);
         GameManager.UISystem().LevelingUp = false;
+        AudioSource.clip = GameManager.AnimationSystem().LevelUpSound;
+        AudioSource.Play();
     }
 }

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212093767104073986}
   - component: {fileID: 114283694459583106}
   - component: {fileID: 58090999106494172}
+  - component: {fileID: 82862724147295398}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -57,6 +58,86 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!82 &82862724147295398
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1622206995634986}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114283694459583106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,15 +152,16 @@ MonoBehaviour:
   Name: Bad Guy 1
   MaxHealth: 10
   Health: 10
-  Strength: 0
-  Speed: 1
-  Efficiency: 0
-  TotalActionTokens: 4
+  Strength: 1
+  Speed: 4
+  Efficiency: 1
+  Capacity: 3
   CurrentActionTokens: 0
-  MaxPower: 5
   CurrentPower: 2
   StartingPosition: {x: 5, y: 5}
+  AudioSource: {fileID: 82862724147295398}
   PowerDesire: 0.3
+  HealDesire: 0.5
 --- !u!212 &212093767104073986
 SpriteRenderer:
   m_ObjectHideFlags: 1

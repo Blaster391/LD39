@@ -34,6 +34,9 @@ public class MovementAction : BaseAction {
     {
         if (!GameManager.GridSystem().IsPositionAccessible(target)) return;
 
+        Unit.AudioSource.clip = GameManager.AnimationSystem().MoveSoundSound;
+        Unit.AudioSource.Play();
+
         Unit.SetPosition(target);
     }
 

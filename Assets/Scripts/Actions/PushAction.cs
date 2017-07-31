@@ -42,6 +42,10 @@ public class PushAction : BaseAction
             }
 
         }
+
+        Unit.AudioSource.clip = GameManager.AnimationSystem().AttackSound;
+        Unit.AudioSource.Play();
+
         parameters.Target.MoveAnimation(restingPlace.ToVector2());//Hacky AF
         Unit.transform.up = parameters.Target.transform.position - Unit.transform.position;
         parameters.Target.SetPosition(restingPlace);

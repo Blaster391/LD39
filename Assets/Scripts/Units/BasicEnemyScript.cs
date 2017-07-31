@@ -132,6 +132,8 @@ public class BasicEnemyScript : UnitScript
         GameManager.GameActive = false;
         GameManager.PlayerUnit.Score++;
         GameManager.UISystem().LevelingUp = true;
+        GameManager.PlayerUnit.AudioSource.clip = GameManager.AnimationSystem().LevelUpSound;
+        GameManager.PlayerUnit.AudioSource.Play();
         base.Kill();
     }
 
