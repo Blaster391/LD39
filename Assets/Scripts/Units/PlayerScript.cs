@@ -132,7 +132,8 @@ public class PlayerScript : UnitScript
                 {"Strength", Strength},
                 {"Speed", Speed},
                 {"Efficiency", Efficiency},
-                {"Capacity", Capacity}
+                {"Capacity", Capacity},
+                {"PlayTime", Time.realtimeSinceStartup }
             });
         }
         catch (Exception ex)
