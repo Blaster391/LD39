@@ -116,6 +116,9 @@ public class PlayerScript : UnitScript
 
     public override void Kill()
     {
+        GameManager.AnimationSystem().AudioMaster.clip = GameManager.AnimationSystem().PlayerDeathSound;
+        GameManager.AnimationSystem().AudioMaster.Play();
+
         GameManager.GameActive = false;
         GameManager.UISystem().ShowDeathScreen();
         base.Kill();

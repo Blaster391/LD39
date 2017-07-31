@@ -14,4 +14,9 @@ public class AnimationSystem : MonoBehaviour {
     public AudioClip PowerUpSound;
     public AudioClip LevelUpSound;
     public AudioClip MoveSoundSound;
+
+    public AudioSource AudioMaster;
+
+    public AudioClip PlayerDeathSound;
+    public AudioClip EnemyDeathSound;
 }

@@ -160,8 +160,8 @@ MonoBehaviour:
   CurrentPower: 2
   StartingPosition: {x: 5, y: 9}
   AudioSource: {fileID: 82862724147295398}
-  PowerDesire: 0.25411034
-  HealDesire: 0.18734355
+  PowerDesire: 0.4
+  HealDesire: 0.5
 --- !u!212 &212093767104073986
 SpriteRenderer:
   m_ObjectHideFlags: 1
