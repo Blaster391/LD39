@@ -27,6 +27,7 @@ public class PushAction : BaseAction
         var distanceToPush = Unit.Strength; //todo stats based
         var directionToPush = DirectionToPosition(parameters.Target.CurrentPosition);
         var restingPlace = parameters.Target.CurrentPosition;
+        bool hitSomething = false;
         for (int i = 0; i < distanceToPush; i++)
         {
             var newPos = GetNewPosition(directionToPush, restingPlace);
@@ -36,8 +37,7 @@ public class PushAction : BaseAction
             }
             else
             {
-                parameters.Target.TakeDamage(4 * Unit.Strength);
-                GameManager.UISystem().Log(parameters.Target.Name + " Took "+ Unit.Strength + " damage from collision!");
+                hitSomething = true;
                 break;
             }
 
@@ -49,6 +49,12 @@ public class PushAction : BaseAction
         parameters.Target.MoveAnimation(restingPlace.ToVector2());//Hacky AF
         Unit.transform.up = parameters.Target.transform.position - Unit.transform.position;
         parameters.Target.SetPosition(restingPlace);
+
+        if (hitSomething)
+        {
+            parameters.Target.TakeDamage(4 * Unit.Strength);
+            GameManager.UISystem().Log(parameters.Target.Name + " Took " + Unit.Strength + " damage from collision!");
+        }
     }
 
     protected override void ActionAnimation(ActionParameters parameters)
