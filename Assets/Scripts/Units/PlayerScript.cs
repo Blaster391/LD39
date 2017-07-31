@@ -128,6 +128,7 @@ public class PlayerScript : UnitScript
             Analytics.CustomEvent("gameOver", new Dictionary<string, object>
             {
                 {"Level", Score},
+                {"Turn", GameManager.TurnSystem().CurrentRotation },
                 {"MaxHealth", MaxHealth},
                 {"Strength", Strength},
                 {"Speed", Speed},

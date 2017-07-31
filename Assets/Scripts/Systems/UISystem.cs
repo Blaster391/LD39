@@ -19,7 +19,6 @@ public class UISystem : MonoBehaviour {
     public Button StartButton;
 
     public Text ConsoleText;
-    public ScrollRect Console;
 
     public GameObject ActiveIndicator;
     public GameObject TargetIndicator;
@@ -133,7 +132,6 @@ public class UISystem : MonoBehaviour {
             TargetStats.SetActive(true);
             TargetHealthBar.gameObject.SetActive(true);
             TargetPowerBar.gameObject.SetActive(true);
-            TargetActionBar.gameObject.SetActive(true);
             TargetStrength.text = "STR:" + Player.Target.Strength;
             TargetSpeed.text = "SPD:" + Player.Target.Speed;
             TargetEfficieny.text = "EFF:" + Player.Target.Efficiency;
@@ -159,19 +157,19 @@ public class UISystem : MonoBehaviour {
         ConsoleText.text += text;
         ConsoleText.text += "\n";
 
-        StartCoroutine(ResetScroll());
+        //StartCoroutine(ResetScroll());
     }
 
-    IEnumerator ResetScroll()
-    {
-        Canvas.ForceUpdateCanvases();
+    //IEnumerator ResetScroll()
+    //{
+    //    Canvas.ForceUpdateCanvases();
 
-        // Wait.
-        yield return null;
+    //    // Wait.
+    //    yield return null;
 
-        Console.verticalScrollbar.value = 0f;
-        Canvas.ForceUpdateCanvases();
-    }
+    //    Console.verticalScrollbar.value = 0f;
+    //    Canvas.ForceUpdateCanvases();
+    //}
 
     public bool _isDead = true;
     public void ShowDeathScreen()
