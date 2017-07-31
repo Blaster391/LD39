@@ -136,8 +136,8 @@ public class BasicEnemyScript : UnitScript
         GameManager.AnimationSystem().AudioMaster.clip = GameManager.AnimationSystem().EnemyDeathSound;
         GameManager.AnimationSystem().AudioMaster.Play();
 
-        GameManager.PlayerUnit.AudioSource.clip = GameManager.AnimationSystem().LevelUpSound;
-        GameManager.PlayerUnit.AudioSource.Play();
+        //GameManager.PlayerUnit.AudioSource.clip = GameManager.AnimationSystem().LevelUpSound;
+        //GameManager.PlayerUnit.AudioSource.Play();
         base.Kill();
     }
 
