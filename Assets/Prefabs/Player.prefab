@@ -138,7 +138,7 @@ MonoBehaviour:
   Health: 20
   Strength: 2
   Speed: 5
-  Efficiency: 5
+  Efficiency: 4
   Capacity: 10
   CurrentActionTokens: 0
   CurrentPower: 0

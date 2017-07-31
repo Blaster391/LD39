@@ -150,18 +150,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Bad Guy 1
-  MaxHealth: 10
+  MaxHealth: 7
   Health: 10
   Strength: 1
   Speed: 4
-  Efficiency: 1
-  Capacity: 3
+  Efficiency: 3
+  Capacity: 7
   CurrentActionTokens: 0
   CurrentPower: 2
-  StartingPosition: {x: 5, y: 5}
+  StartingPosition: {x: 5, y: 9}
   AudioSource: {fileID: 82862724147295398}
-  PowerDesire: 0.3
-  HealDesire: 0.5
+  PowerDesire: 0.25411034
+  HealDesire: 0.18734355
 --- !u!212 &212093767104073986
 SpriteRenderer:
   m_ObjectHideFlags: 1

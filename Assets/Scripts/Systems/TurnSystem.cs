@@ -53,11 +53,11 @@ public class TurnSystem : MonoBehaviour
 
         //Stat generator
         enemy.HealDesire = Random.value / 2;
-        enemy.PowerDesire = Random.value * 0.3f;
+        enemy.PowerDesire = Random.value * 0.2f;
 
         enemy.Strength = 1 + Mathf.RoundToInt(Random.value * EnemiesSpawned * 0.5f);
-        enemy.Capacity = 5 + Mathf.RoundToInt(Random.value * EnemiesSpawned);
-        enemy.Speed = 3 + Mathf.RoundToInt(Random.value * EnemiesSpawned);
+        enemy.Capacity = 5 + Mathf.RoundToInt(Random.value * EnemiesSpawned / 2);
+        enemy.Speed = 3 + Mathf.RoundToInt(Random.value * EnemiesSpawned * 0.4f);
         enemy.MaxHealth = 5 + Mathf.RoundToInt(Random.value * EnemiesSpawned * 2);
         enemy.Efficiency = 2 + Mathf.RoundToInt(Random.value * EnemiesSpawned);
 

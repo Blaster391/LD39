@@ -76,7 +76,12 @@ public class UISystem : MonoBehaviour {
     void Update()
     {
         if (_isDead)
+        {
+            TargetIndicator.SetActive(false);
+            ActiveIndicator.SetActive(false);
             return;
+        }
+        ActiveIndicator.SetActive(true);
 
         if (LevelingUp)
             GameManager.GameActive = false;
