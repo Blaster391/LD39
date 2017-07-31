@@ -126,6 +126,9 @@ public class UISystem : MonoBehaviour {
             TargetPowerBar.SetBar(Player.Target.CurrentPower, Player.Target.Capacity);
             TargetActionBar.SetBar(Player.Target.CurrentActionTokens, Player.Target.Speed);
             TargetStats.SetActive(true);
+            TargetHealthBar.gameObject.SetActive(true);
+            TargetPowerBar.gameObject.SetActive(true);
+            TargetActionBar.gameObject.SetActive(true);
             TargetStrength.text = "STR:" + Player.Target.Strength;
             TargetSpeed.text = "SPD:" + Player.Target.Speed;
             TargetEfficieny.text = "EFF:" + Player.Target.Efficiency;
